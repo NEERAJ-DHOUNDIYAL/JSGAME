@@ -48,7 +48,7 @@ const checkwinner = () => {
     if (pos1 != "" && pos2 != "" && pos3 != "") {
       if (pos1 === pos2 && pos2 === pos3) {
         console.log("winner", pos1);
-        
+        count=0;
         showwinner(pos1);
       }
     }
@@ -64,13 +64,14 @@ const showwinner = (winner) => {
     container.classList.remove("hide");
     disabledBoxes();
   };
+
   const draw = () => {
     msg.innerText = "Match is draw....try again";
     container.classList.remove("hide");
     count=0;
     disabledBoxes();
   };
-  
+
   const disabledBoxes = () => {
     for (let box of boxes) {
       box.disabled = true;
