@@ -64,6 +64,13 @@ const showwinner = (winner) => {
     container.classList.remove("hide");
     disabledBoxes();
   };
+  const draw = () => {
+    msg.innerText = "Match is draw....try again";
+    container.classList.remove("hide");
+    count=0;
+    disabledBoxes();
+  };
+  
   const disabledBoxes = () => {
     for (let box of boxes) {
       box.disabled = true;
@@ -84,12 +91,7 @@ const enabledBoxes = () => {
 };
 
 
-const draw = () => {
-    msg.innerText = "Match is draw....try again";
-    container.classList.remove("hide");
-    count=0;
-    disabledBoxes();
-  };
+
 
 reset.addEventListener("click", resetgame);
 newgame.addEventListener("click", resetgame);
