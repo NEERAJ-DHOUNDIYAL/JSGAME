@@ -72,3 +72,31 @@ h1{
 .hide{
     display: none;
 }
+
+
+p{
+    margin-top: 2vmin;
+    font-size: 4vmin;
+    color: aliceblue;  
+
+}
+.SCORE{
+   
+
+    display: flex;
+    justify-content:start;
+    
+}
+.pyr1{
+    display: flex;
+}
+.pyr2{
+    display: flex;
+}
+#p1{
+    color: yellow;
+}
+#p2{
+    margin-left: 30px;
+    color: red;
+}

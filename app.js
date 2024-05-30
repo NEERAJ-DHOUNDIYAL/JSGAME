@@ -3,8 +3,17 @@ let reset = document.querySelector("#btnreset");
 let newgame = document.querySelector("#new-game");
 let msg = document.querySelector("#msg");
 let container = document.querySelector(".msg-container ");
+let player1=document.querySelector("#p1");
+let player2=document.querySelector("#p2");
+let s1=document.querySelector("#s1");
+let s2=document.querySelector("#s2");
 
-
+let x=prompt("player one name:");
+player1.innerText= x+" : ";
+let y=prompt("player two name:");
+player2.innerText ="    "+ y+" : ";
+let scoreO = 0;
+let scoreX = 0;
 
 let winingptn = [
   [0, 1, 2],
@@ -49,7 +58,16 @@ const checkwinner = () => {
       if (pos1 === pos2 && pos2 === pos3) {
         console.log("winner", pos1);
         count=0;
-        showwinner(pos1);
+        if (pos1 === "O") {
+          scoreO = scoreO + 1;
+          s1.innerText=scoreO;
+          showwinner(x, scoreO);
+        } else {
+          scoreX = scoreX + 1;
+          s2.innerText=scoreX;
+          showwinner(y, scoreX);
+        }
+        //showwinner(pos1);
       }
     }
     
@@ -59,8 +77,8 @@ const checkwinner = () => {
 }
 };
 
-const showwinner = (winner) => {
-    msg.innerText = `Congratulation winner is ${winner}`;
+const showwinner = (winner,score) => {
+    msg.innerText = `congratulation winner is ${winner} and score is ${score}`;
     container.classList.remove("hide");
     disabledBoxes();
   };
@@ -78,11 +96,11 @@ const showwinner = (winner) => {
     }
   };
 
-const resetgame = () => {
-    turnO = true;
-    enabledBoxes();
-    container.classList.add("hide");
-  };
+// const resetgame = () => {
+//     turnO = true;
+//     enabledBoxes();
+//     container.classList.add("hide");
+//   };
 
 const enabledBoxes = () => {
   for (let box of boxes) {
@@ -90,9 +108,26 @@ const enabledBoxes = () => {
     box.innerText = "";
   }
 };
+const resetgame = () => {
+  
+    enabledBoxes();
+    container.classList.add("hide");
+    scoreO = 0;
+    s1.innerText=scoreO;
+    scoreX = 0;
+    s2.innerText=scoreX;
+  
+};
+const newG = () => {
+  for (let box of boxes) {
+    enabledBoxes();
+    container.classList.add("hide");
+  }
+};
+
 
 
 
 
 reset.addEventListener("click", resetgame);
-newgame.addEventListener("click", resetgame);
+newgame.addEventListener("click", newG);
